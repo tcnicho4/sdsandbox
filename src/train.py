@@ -19,6 +19,7 @@ from tensorflow import keras
 
 import conf
 import models
+import tensorflow
 
 '''
 matplotlib can be a pain to setup. So handle the case where it is absent. When present,

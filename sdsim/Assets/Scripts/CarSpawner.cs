@@ -439,6 +439,10 @@ public class CarSpawner : MonoBehaviour
             menuHandler.trainingManager = getChildGameObject(go, "TrainingManager").GetComponent<TrainingManager>();
             menuHandler.trainingManager.carObj = go;
 
+            // [Tylerbrawl] Adding the capstone controller here. I really don't like this ugly
+            // set-up, though.
+            menuHandler.capstoneControl = getChildGameObject(go, "CapstoneController");
+
             if (EnableTrainingManager)
             {
                 menuHandler.trainingManager.gameObject.SetActive(true);

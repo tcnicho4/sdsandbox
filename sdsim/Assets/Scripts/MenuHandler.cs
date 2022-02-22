@@ -5,6 +5,7 @@ using UnityStandardAssets.Vehicles.Car;
 
 public class MenuHandler : MonoBehaviour {
 
+    // [Tylerbrawl] A bunch of these get instantiated by the CarSpawner (see CarSpawner::Spawn() in CarSpawner.cs).
     public GameObject PIDContoller;
     public GameObject Logger;
     public GameObject NetworkSteering;
@@ -12,8 +13,11 @@ public class MenuHandler : MonoBehaviour {
     public GameObject stopPanel;
     public GameObject exitPanel;
     public GameObject carJSControl;
+    public GameObject capstoneControl;
     public GameObject PIDControls;
     public TrainingManager trainingManager;
+
+    // [Tylerbrawl] TODO: Refactor this God-forsaken mess...
 
     public void Awake()
     {
@@ -51,6 +55,9 @@ public class MenuHandler : MonoBehaviour {
 
 		if(PIDControls != null)
 			PIDControls.SetActive(true);
+
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
 	
 		menuPanel.SetActive(false);
         stopPanel.SetActive(true);
@@ -70,8 +77,11 @@ public class MenuHandler : MonoBehaviour {
 
 		if(PIDControls != null)
 			PIDControls.SetActive(false);
-	
-		menuPanel.SetActive(false);
+
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
+
+        menuPanel.SetActive(false);
         stopPanel.SetActive(true);
         exitPanel.SetActive(false);
     }
@@ -87,7 +97,10 @@ public class MenuHandler : MonoBehaviour {
 		if(NetworkSteering != null)    
             NetworkSteering.SetActive(true);
 
-		menuPanel.SetActive(false);
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
+
+        menuPanel.SetActive(false);
         stopPanel.SetActive(true);
         exitPanel.SetActive(false);
 
@@ -108,7 +121,10 @@ public class MenuHandler : MonoBehaviour {
 		if(PIDControls != null)
 			PIDControls.SetActive(true);
 
-		menuPanel.SetActive(false);
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
+
+        menuPanel.SetActive(false);
         stopPanel.SetActive(true);
         exitPanel.SetActive(false);
     }
@@ -124,7 +140,29 @@ public class MenuHandler : MonoBehaviour {
 		if(PIDControls != null)
 			PIDControls.SetActive(false);
 
-		menuPanel.SetActive(false);
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
+
+        menuPanel.SetActive(false);
+        stopPanel.SetActive(true);
+        exitPanel.SetActive(false);
+    }
+
+    public void OnCapstoneTest()
+    {
+        if (PIDContoller != null)
+            PIDContoller.SetActive(false);
+
+        if (carJSControl != null)
+            carJSControl.SetActive(false);
+
+        if (PIDControls != null)
+            PIDControls.SetActive(false);
+
+        if (capstoneControl != null)
+            capstoneControl.SetActive(true);
+
+        menuPanel.SetActive(false);
         stopPanel.SetActive(true);
         exitPanel.SetActive(false);
     }
@@ -157,6 +195,9 @@ public class MenuHandler : MonoBehaviour {
 
         if(NetworkSteering != null)    
             NetworkSteering.SetActive(false);
+
+        if (capstoneControl != null)
+            capstoneControl.SetActive(false);
 
         menuPanel.SetActive(true);
         stopPanel.SetActive(false);

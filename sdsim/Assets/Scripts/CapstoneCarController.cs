@@ -22,6 +22,7 @@ public class CapstoneCarController : MonoBehaviour
     private static readonly float BASE_TIME_TO_CHANGE_STATE = 0.5f;
     private float mTimeToChangeState = BASE_TIME_TO_CHANGE_STATE;
    
+    // This function gets called once: Just before it needs to be used.
     void Awake()
     {
         if (mCarGameObject != null)
@@ -79,5 +80,10 @@ public class CapstoneCarController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public ICar GetCar()
+    {
+        return mCar;
     }
 }

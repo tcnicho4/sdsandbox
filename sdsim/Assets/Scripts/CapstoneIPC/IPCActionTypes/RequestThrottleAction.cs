@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Capstone
+{
+    class RequestThrottleAction : IIPCAction
+    {
+        private float mThrottleAmount;
+
+        public RequestThrottleAction(float throttleAmount)
+        {
+            mThrottleAmount = throttleAmount;
+        }
+
+        public void ExecuteAction(CapstoneCarController carController)
+        {
+            carController.GetCar().RequestThrottle(mThrottleAmount);
+        }
+    }
+}

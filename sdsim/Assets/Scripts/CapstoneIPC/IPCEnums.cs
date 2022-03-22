@@ -14,4 +14,11 @@ namespace Capstone
         
         COUNT_OR_ERROR
     }
+
+    enum IPCServerResult : System.Int32
+    {
+        OK,
+        ERROR_INVALID_ARGUMENTS,
+        ERROR_CORRUPT_STREAM
+    }
 }

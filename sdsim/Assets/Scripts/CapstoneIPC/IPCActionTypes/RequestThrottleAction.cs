@@ -15,9 +15,17 @@ namespace Capstone
             mThrottleAmount = throttleAmount;
         }
 
-        public void ExecuteAction(CapstoneCarController carController)
+        public IPCServerResult ExecuteAction(CapstoneCarController carController)
         {
+            // The throttle amount must be in the range [0.0f, 1.0f].
+            if (mThrottleAmount < 0.0f)
+                mThrottleAmount = 0.0f;
+            else if (mThrottleAmount > 1.0f)
+                mThrottleAmount = 1.0f;
+            
             carController.GetCar().RequestThrottle(mThrottleAmount);
+
+            return IPCServerResult.OK;
         }
     }
 }

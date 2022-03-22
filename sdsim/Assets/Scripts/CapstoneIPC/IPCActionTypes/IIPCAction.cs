@@ -8,6 +8,6 @@ namespace Capstone
 {
     interface IIPCAction
     {
-        public void ExecuteAction(CapstoneCarController carController);
+        public IPCServerResult ExecuteAction(CapstoneCarController carController);
     }
 }

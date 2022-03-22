@@ -2014,7 +2014,12 @@ PrefabInstance:
     - target: {fileID: 6521535942565835415, guid: 7a25587ae4fe446b98418947bb7da6cb,
         type: 3}
       propertyPath: m_Text
-      value: '[CAPSTONE - DRUNK DRIVER TEST NO REC]'
+      value: '[CAPSTONE IPC]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521535942565835415, guid: 7a25587ae4fe446b98418947bb7da6cb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8199996440688388616, guid: 7a25587ae4fe446b98418947bb7da6cb,
         type: 3}

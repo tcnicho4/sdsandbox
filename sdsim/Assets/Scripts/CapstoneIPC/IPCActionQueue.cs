@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    class IPCMessageQueue
+    class IPCActionQueue
     {
         private Queue<IIPCAction> mActionQueue = new Queue<IIPCAction>();
+        private Queue<IPCServerResult> mResultQueue = new Queue<IPCServerResult>();
         private object mCritSection = new object();
 
-        public IPCMessageQueue()
+        public IPCActionQueue()
         {}
 
         public void AddAction(IIPCAction action)
@@ -35,9 +36,22 @@ namespace Capstone
                 while(mActionQueue.Count > 0)
                 {
                     IIPCAction currAction = mActionQueue.Dequeue();
-                    currAction.ExecuteAction(carController);
+                    mResultQueue.Enqueue(currAction.ExecuteAction(carController));
                 }
             }
+        }
+
+        public List<IPCServerResult> ExtractServerResults()
+        {
+            List<IPCServerResult> resultList = new List<IPCServerResult>();
+            
+            lock(mCritSection)
+            {
+                while (mResultQueue.Count > 0)
+                    resultList.Add(mResultQueue.Dequeue());
+            }
+
+            return resultList;
         }
     }
 }
